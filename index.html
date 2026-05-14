@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Torre Infinita v30 - BossFactory Edition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html, body { touch-action: pan-x pan-y; overflow: hidden; }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="sideMenu">
+            <div class="menuButton" data-type="platform">📦<br>BLOCO</div>
+            <div class="menuButton" data-type="ladder">🪜<br>ESCADA</div>
+            <div class="menuButton" data-type="escalator">🎢<br>ROLANTE</div>
+            <div class="menuButton" data-type="elevator">🛗<br>ELEVADOR</div>
+            <div class="menuButton" data-type="spring">🌀<br>MOLA</div>
+            <div class="menuButton" data-type="wall">🧱<br>PAREDE</div>
+            <div class="menuButton action-btn" data-type="parachute">🪂<br>PARAQUEDAS</div>
+            <div class="menuButton action-btn" data-type="shield">🛡️<br>ESCUDO</div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <div id="muteBtn">🔊</div>
+
+    <div id="info">
+        <div class="stat"><span class="stat-label">🎯 SCORE:</span><span class="stat-value" id="score">0</span></div>
+        <div class="stat"><span class="stat-label">🏆 HIGH:</span><span id="highScore">0</span></div>
+        <div class="stat"><span class="stat-label">🎮 Fase:</span><span class="stat-value" id="level">1</span></div>
+        <div class="stat"><span class="stat-label">🌍 Bioma:</span><span class="stat-value" id="biome" style="font-weight:bold;">Superfície</span></div>
+        <div class="stat"><span class="stat-label">⬆️ Altura:</span><span class="stat-value" id="height">0</span>m</div>
+        <div class="stat"><span class="stat-label">❤️ Vidas:</span><span class="hearts" id="lives"></span></div>
+        <div class="stat"><span class="stat-label">🤖 Boot:</span><span class="stat-value" id="bootHeight">0</span>m</div>
+    </div>
+
+    <div id="combo"></div>
+    <div id="bootSpeech"></div>
+    <div id="warning"></div>
+    <div id="bonus"></div>
+
+    <div id="gameOver">
+        <h1>GAME OVER</h1>
+        <div class="final-stats">
+            <div>Score Final: <span id="finalScore">0</span></div>
+            <div>Fase Alcançada: <span id="finalLevel">0</span></div>
+            <div>Altura Máxima: <span id="finalHeight">0</span>m</div>
+            <div>Boot chegou em: <span id="finalBootHeight">0</span>m</div>
+             <!-- <div style="font-size:13px;color:#0ff;margin-top:8px;">
+                🎲 Seed: <span id="finalSeed" style="color:#ff0">—</span>
+            </div> --!>
+            <div id="newRecord" style="color:#ffd700;font-size:24px;display:none;">🏆 NOVO RECORDE! 🏆</div>
+        </div>
+        <button onclick="restartGame()">JOGAR NOVAMENTE</button>
+    </div>
+
+    <div id="instructions">
+		🗼 <strong>TORRE INFINITA</strong>&nbsp;•&nbsp;
+        (← →) Mover | ESPAÇO: Pular &nbsp;•&nbsp;
+        SELECIONAR ELEMENTO → Arraste → Solte &nbsp;•&nbsp;
+		Z | X - Atirar !!! &nbsp;•&nbsp;
+
+    </div>
+
+    <!-- ORDEM OBRIGATÓRIA -->
+    <script src="js/1_state.js"></script>       <!-- canvas + bloqueio de zoom -->
+    <script src="js/2_audio.js"></script>
+    <script src="js/3_biomes.js"></script>
+    <script src="js/4_mechanics.js"></script>    <!-- extendTower usa Rng -->
+    <script src="js/5_controls.js"></script>
+
+    <script src="js/seed_rng.js"></script>       <!-- PRNG + UI de seed (ANTES do BossFactory) -->
+	<script src="js/7_enemies.js"></script>
+    <script src="js/BossFactory.js"></script>    <!-- gerador procedural -->
+    <script src="js/boss_school.js"></script>    <!-- gerenciador + auto-init -->
+	<script src="js/player_combat.js"></script>
+
+    <!-- Bosses artesanais opcionais -->
+    <!-- <script src="js/boos/boss01.js"></script> -->
+    <!-- <script src="js/boos/boss02.js"></script> -->
+
+    <script src="js/6_main.js"></script>         <!-- loop principal — sempre por último -->
+</body>
+</html>
