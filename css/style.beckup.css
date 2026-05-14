@@ -9,29 +9,22 @@
             font-family: 'Arial', sans-serif;
             user-select: none;
         }
-		/* Garante que o container ocupe a tela toda sem scroll */
-		#gameContainer {
-			display: flex;
-			flex-direction: row; /* Força o alinhamento horizontal */
-			width: 100vw;
-			height: 100vh;
-			overflow: hidden;
-			position: relative;
-		}
-		/* Ajuste no Side Menu para não ser "esmagado" */
-		#sideMenu {
-			width: 120px;
-			min-width: 120px; /* Impede o flexbox de encolher o menu */
-			background: linear-gradient(180deg, #0f3460 0%, #16213e 100%);
-			border-right: 3px solid #e94560;
-			display: flex;
-			flex-direction: column;
-			padding: 10px;
-			gap: 10px;
-			overflow-y: auto;
-			z-index: 1001; /* Garante que fique acima do canvas */
-			height: 100%;
-		}
+        #gameContainer {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+        #sideMenu {
+            width: 120px;
+            background: linear-gradient(180deg, #0f3460 0%, #16213e 100%);
+            border-right: 3px solid #e94560;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            gap: 10px;
+            overflow-y: auto;
+            z-index: 10;
+        }
         .menuButton {
             background: linear-gradient(135deg, #e94560 0%, #c23b52 100%);
             border: 2px solid #fff;
@@ -62,18 +55,11 @@
             0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
             50% { box-shadow: 0 0 20px rgba(255, 215, 0, 1); }
         }
-		/* Ajuste no Canvas para ocupar o resto do espaço */
-		#gameCanvas {
-			flex: 1;
-			height: 100%;
-			display: block;
-			cursor: crosshair;
-			min-width: 0; /* Correção comum para flexbox */
-		}
-		/* Ajuste das margens dos painéis para alinhar com o menu de 120px */
-		#info, #instructions {
-			left: 130px; /* Mantém uma pequena folga do menu */
-		}
+        #gameCanvas {
+            flex: 1;
+            display: block;
+            cursor: crosshair;
+        }
         #gameCanvas.placing {
             cursor: copy;
         }
